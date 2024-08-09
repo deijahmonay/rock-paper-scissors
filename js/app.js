@@ -6,31 +6,32 @@ const choices = ['rock','paper','scissors']
 /*-------------------------------- Variables --------------------------------*/
 // 2) Define our variables for state
     //The players choice
-let playerChoice
+let playerChoice;
     // The computers choice
-let computerChoice
+let computerChoice;
     //The match result - win/lose/tie
     //A result message - display the result/ who won
-let msg
+let msg;
 /*------------------------ Cached Element References ------------------------*/
 // 3) Reference to DOM element to disply messages
-const resultDisplayElement = document.querySelector ('#result-display')
+const resultDisplayElement = document.querySelector ('#result-display');
     // 3 button DOM references for rock, paper, scissors
 /*-------------------------------- Functions --------------------------------*/
 // 4) handle player click
 const getPlayerChoice = (event) => {
     // console.log('getPlayerChoice', event)
     playerChoice = event.target.id
-    console.log(playerChoice) // checking player choice has a value 
-    console.log(computerChoice, "computer choice")
 
-}
+    console.log(playerChoice) // checking player choice has a value 
+};
 // handle generating random selections for the computer player
 const getComputerChoice = () => {
     const randomIndex = Math.floor(Math.random() * choices.length )
-    computerchoice = choices[randomIndex]
-    console.log(randomIndex, "computerChoice")
-}
+    computerChoice = choices[randomIndex]
+    console.log(randomIndex)
+    console.log(computerChoice, "computer choice")
+};
+
 // compare player & computer choices - check for winner
 const compare = () => {
     //if/else comparison to all choices
@@ -62,21 +63,36 @@ const compare = () => {
         // same option - its a tie
 
 // render a win, lose ,tie message to the player
+const render = () => {
+    resultDisplayElement.textContent = `You chose ${playerChoice}  and the computer chose ${computerChoice}. ${msg} `
+};
+
     // including player and computer choices in the message
+
     // clearly indiciating who won/result
 
 const play = (event) => {
     getPlayerChoice(event)
     getComputerChoice()
-    console.log(playerChoice, "Player choice")
     compare()
+    render()
+    // console.log(playerChoice, "player choice")
+}
+
+const resetGame = () => {
+    //playerChoice = null
+    //computerChoice = null
+    // same as above
+    playerChoice = computerChoice = null
+    msg = ''
+    console.log(playerChoice, computerChoice, msg)
 }
 /*----------------------------- Event Listeners -----------------------------*/
 // 5) Handle a player clicking a button
-document.querySelector('#rock').addEventListener('click', play)
-document.querySelector('#paper').addEventListener('click', play)
-document.querySelector('#scissors').addEventListener('click', play)
-
+document.querySelector('#rock').addEventListener('click', play); //giving buttons the click event -- running callback function which is the play function here
+document.querySelector('#paper').addEventListener('click', play);
+document.querySelector('#scissors').addEventListener('click', play);
+document/querySelector('#resetButton')
 // alternative way to add event listeners to all buttons
 // document.querySelectorAll('button').forEach(function(button){
 //     button.addEventListener('click', play);
