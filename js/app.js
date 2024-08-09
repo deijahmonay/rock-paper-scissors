@@ -31,4 +31,12 @@ const resultDisplayElement = document.querySelector ('#result-display')
     // clearly indiciating who won/result
 
 /*----------------------------- Event Listeners -----------------------------*/
-// Handle a player clicking a button
+// 5) Handle a player clicking a button
+document.querySelector('#rock').addEventListener('click', play)
+document.querySelector('#paper').addEventListener('click', play)
+document.querySelector('#scissor').addEventListener('click', play)
+
+// alternative way to add event listeners to all buttons
+// document.querySelectorAll('button').forEach(function(button){
+//     button.addEventListener('click', play);
+// });
