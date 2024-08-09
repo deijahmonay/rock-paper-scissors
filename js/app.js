@@ -17,8 +17,19 @@ let msg
 const resultDisplayElement = document.querySelector ('#result-display')
     // 3 button DOM references for rock, paper, scissors
 /*-------------------------------- Functions --------------------------------*/
-//  handle player click
+// 4) handle player click
+const getPlayerChoice = (event) => {
+    // console.log('getPlayerChoice', event)
+    playerChoice = event.target.id
+    console.log(playerChoice) // checking player choice has a value 
+
+}
 // handle generating random selections for the computer player
+const getComputerChoice = () => {
+    const randomIndex = Math.floor(Math.random() * choices.length )
+    computerchoice = choices[randomIndex]
+    console.log(randomIndex, "computerChoice")
+}
 // compare player & comouter chpices - check for winner
     //if/else comparison to all choices
         //rock beats scissors
@@ -30,11 +41,14 @@ const resultDisplayElement = document.querySelector ('#result-display')
     // including player and computer choices in the message
     // clearly indiciating who won/result
 
+const play = (event) => {
+    getPlayerChoice(event)
+}
 /*----------------------------- Event Listeners -----------------------------*/
 // 5) Handle a player clicking a button
 document.querySelector('#rock').addEventListener('click', play)
 document.querySelector('#paper').addEventListener('click', play)
-document.querySelector('#scissor').addEventListener('click', play)
+document.querySelector('#scissors').addEventListener('click', play)
 
 // alternative way to add event listeners to all buttons
 // document.querySelectorAll('button').forEach(function(button){
