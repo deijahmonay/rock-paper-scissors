@@ -22,6 +22,7 @@ const getPlayerChoice = (event) => {
     // console.log('getPlayerChoice', event)
     playerChoice = event.target.id
     console.log(playerChoice) // checking player choice has a value 
+    console.log(computerChoice, "computer choice")
 
 }
 // handle generating random selections for the computer player
@@ -30,7 +31,30 @@ const getComputerChoice = () => {
     computerchoice = choices[randomIndex]
     console.log(randomIndex, "computerChoice")
 }
-// compare player & comouter chpices - check for winner
+// compare player & computer choices - check for winner
+const compare = () => {
+    //if/else comparison to all choices
+    //rock beats scissors
+    //scissors beats paper
+    // paper beats rock
+    // same option - its a tie
+    if(playerChoice === computerChoice) {
+        // same option - its a tie
+        msg = 'You tied!'
+    } else if(playerChoice === choices[0] && computerChoice === choices[2]){
+        //rock beats scissors
+        msg = 'Congrats! You win!'
+    } else if(playerChoice === choices[1] && computerChoice === choices[0]){
+        // paper beats rock
+        msg = "Congrats! You win!"
+    } else if(playerChoice === choices[0] && computerChoice === choices[2]){
+        // scissors beats paper
+        msg = "Congrats! You win!"
+    } else {
+        msg = 'You lose! Try again!'
+        console.log(msg, "message")
+    }
+}
     //if/else comparison to all choices
         //rock beats scissors
         //scissors beats paper
@@ -43,6 +67,9 @@ const getComputerChoice = () => {
 
 const play = (event) => {
     getPlayerChoice(event)
+    getComputerChoice()
+    console.log(playerChoice, "Player choice")
+    compare()
 }
 /*----------------------------- Event Listeners -----------------------------*/
 // 5) Handle a player clicking a button
